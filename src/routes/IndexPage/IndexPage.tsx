@@ -7,19 +7,18 @@ import { useMemo } from 'react';
 export default function IndexPage() {
     const bem = useBem('IndexPage');
 
-    const {data, isLoading} = useFetch(useMemo(() => ({
+    const {data: receivedMessage, isLoading} = useFetch(useMemo(() => ({
         url: '/api/v1/get-message',
     }), []));
 
-    if (isLoading) {
-        return (<div>
-            Loading...
-        </div>);
-    }
+    const greetingMessage = isLoading ? 'загружаем' : receivedMessage;
 
     return (
         <div className={bem.block()}>
-            Greeting message: {data}
+            <div>
+                Greeting message: {greetingMessage}
+            </div>
+            <img alt='Чюваки' src='/images/wednesdaymydudeswide.jpg' />
         </div>
     );
 }
