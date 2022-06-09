@@ -4,17 +4,20 @@ import './IndexPage.scss';
 import {useBem, useFetch, useSelector} from '@steroidsjs/core/hooks';
 import { useMemo } from 'react';
 import {getUser} from '@steroidsjs/core/reducers/auth';
+import {getRouteParams} from '@steroidsjs/core/reducers/router';
 
-export const getIndexPageFetch = () => ({
-    url: '/api/v1/get-message',
+export const getIndexPageFetch = match => ({
+    url: `/api/v1/get-message/${match.params.personTitle}`,
 })
 
 export default function IndexPage() {
     const bem = useBem('IndexPage');
 
     const user = useSelector(state => getUser(state));
+    const routeParams = useSelector(state => getRouteParams(state));
 
-    const {data: receivedMessage, isLoading} = useFetch(useMemo(getIndexPageFetch, []));
+    const fetchConfig = () => getIndexPageFetch({params: routeParams});
+    const {data: receivedMessage, isLoading} = useFetch(useMemo(fetchConfig, []));
 
     const greetingMessage = isLoading ? 'loading' : receivedMessage;
 

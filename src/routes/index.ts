@@ -9,8 +9,8 @@ const roles = [null];
 export default {
     id: ROUTE_ROOT,
     exact: true,
-    path: '/',
+    path: '/:personTitle',
     component: IndexPage,
     roles,
-    preloadData: () => [getIndexPageFetch()],
+    preloadData: match => [getIndexPageFetch(match)],
 } as IRouteItem;
