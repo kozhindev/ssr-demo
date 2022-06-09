@@ -1,5 +1,6 @@
 import {IRouteItem} from '@steroidsjs/core/ui/nav/Router/Router';
 import IndexPage from './IndexPage';
+import {getIndexPageFetch} from './IndexPage/IndexPage';
 
 export const ROUTE_ROOT = 'root';
 
@@ -11,4 +12,5 @@ export default {
     path: '/',
     component: IndexPage,
     roles,
+    preloadData: () => [getIndexPageFetch()],
 } as IRouteItem;

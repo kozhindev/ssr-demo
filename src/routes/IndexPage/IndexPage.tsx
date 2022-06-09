@@ -5,14 +5,16 @@ import {useBem, useFetch, useSelector} from '@steroidsjs/core/hooks';
 import { useMemo } from 'react';
 import {getUser} from '@steroidsjs/core/reducers/auth';
 
+export const getIndexPageFetch = () => ({
+    url: '/api/v1/get-message',
+})
+
 export default function IndexPage() {
     const bem = useBem('IndexPage');
 
     const user = useSelector(state => getUser(state));
 
-    const {data: receivedMessage, isLoading} = useFetch(useMemo(() => ({
-        url: '/api/v1/get-message',
-    }), []));
+    const {data: receivedMessage, isLoading} = useFetch(useMemo(getIndexPageFetch, []));
 
     const greetingMessage = isLoading ? 'loading' : receivedMessage;
 
