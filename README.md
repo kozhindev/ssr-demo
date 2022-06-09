@@ -18,6 +18,10 @@
 1. Выполнить `yarn storybook`
 2. Открыть http://localhost:6006/
 
+##### Запуск webpack сервера
+
+1. Выполнить `yarn build-and-run-ssr`
+2. Открыть http://localhost:9991/
 
 ### Включение eslint в IDE
 
