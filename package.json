@@ -8,7 +8,8 @@
     "watch": "node webpack",
     "build": "node webpack production",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build-and-run-ssr": "node webpack production ssr && node public/server.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
@@ -16,6 +17,7 @@
     "@steroidsjs/bootstrap": "^2.1.18",
     "@steroidsjs/core": "^2.2.76",
     "@steroidsjs/eslint-config": "^2.0.0-beta.4",
+    "@steroidsjs/ssr": "^1.1.0",
     "@steroidsjs/webpack": "^2.2.1",
     "@storybook/react": "~6.3.13",
     "@types/react": "~17.0.1",
