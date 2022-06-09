@@ -5,6 +5,7 @@ import {useBem, useFetch, useSelector} from '@steroidsjs/core/hooks';
 import { useMemo } from 'react';
 import {getUser} from '@steroidsjs/core/reducers/auth';
 import {getRouteParams} from '@steroidsjs/core/reducers/router';
+import Meta from '@steroidsjs/core/ui/layout/Meta';
 
 export const getIndexPageFetch = match => ({
     url: `/api/v1/get-message/${match.params.personTitle}`,
@@ -23,6 +24,10 @@ export default function IndexPage() {
 
     return (
         <div className={bem.block()}>
+            <Meta
+                title={'AAAAAAAAAAA'}
+                description={`Greetings page with the message: ${greetingMessage}`}
+            />
             <div>
                 Greeting message for user '{user.name}': {greetingMessage}
             </div>
